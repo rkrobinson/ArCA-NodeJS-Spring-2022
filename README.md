@@ -1,4 +1,4 @@
-# **Arkansas Coding Academy - Node.js and MongoDB (2021)**
+# **Arkansas Coding Academy - Node.js and MongoDB (Spring 2022)**
 ## **Course Description**
 Learn real world uses for Node.js and MongoDB as we start at an introductory level then progress through intermediate and advanced applications.  This course will focus on flexible utilities, scalable REST API development and integration, task automation, comprehensive testing, dependency management, library creation and publishing, and using MongoDB for storing and analyzing data with NoSQL.  UI design, implementation, and client-side applications will also be covered.
 All of the lesson outlines and presentations can be found in [Github course project repository](https://github.com/carpaltunnel/ArCA-NodeJS-Spring-2022)

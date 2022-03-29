@@ -1,5 +1,7 @@
 /**
  * Sum description here
+ * 
+ *  [Additional documentation]{@link https://google.com}
  * @summary this is the summary
  * @param {number} x - Operand one
  * @param {number} y -  Operand two
@@ -25,6 +27,9 @@ const subtract = (x, y) => {
 /**
  * @constant
  * @default 'this is the default'
+ * @property {string} make - The make of the vehicle
+ * @property {string} model
+ * @property {string} color
  */
 const car = {
     make: 'Honda',
@@ -39,7 +44,8 @@ const paintVehicle = (car, color) => {
 console.log(`Current color is : ${car.color}`);
 
 /**
- * @see @link paintVehicle
+ * paintVehicle
+ * [PaintVehicle Link]{@link https://google.com}
  */
 car.color = paintVehicle(car, 'Blue');
 console.log(`New color is : ${car.color}`);

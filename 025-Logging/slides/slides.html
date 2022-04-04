@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Slides</title>
+
+    <!-- This file contains common styles for example presentations. -->
+    <link href="../../resources/impress.js/css/impress-common.css" rel="stylesheet" />   
+    <!--
+        This file contains styles specific for this example presentation. 
+    -->
+    <link href="../../resources/impress.js/css/classic-slides.css" rel="stylesheet" />
+    
+</head>
+
+<body class="impress-not-supported">
+<!--
+    This fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!--
+    This is the core element used by impress.js: the wrapper for your presentation steps. 
+    In this element all the impress.js magic happens.
+    
+    data-transition-duration sets the time in microseconds that is used for the
+    animation when transtitioning between slides.
+    
+    The width, height, scale and perspective options define a target screen size that you should
+    design your CSS against. impress.js will automatically scale all content to different screen
+    sizes. See DOCUMENTATION.md for details. Below, I have targeted full HD screen resolution.
+    
+    data-autoplay can be used to set the time in seconds, after which presentation
+    automatically moves to next slide. It can also be set individually for each
+    slide, but here we just set a common duration for all slides.
+-->
+<div id="impress"
+    data-transition-duration="1000"
+
+    data-width="1920"
+    data-height="1080"
+    data-max-scale="3"
+    data-min-scale="0"
+    data-perspective="1000"
+>
+
+    <!--
+        Each step of the presentation should be an element inside the `#impress` with a class name
+        of `step`. These step elements are positioned, rotated and scaled by impress.js, and
+        the 'camera' shows them on each step of the presentation.
+        
+        The `id` attribute of the step element is used to identify it in the URL, but it's optional.
+        If it is not defined, it will get a default value of `step-N` where N is a number of slide.
+        This step is auto-assigned the id "step-1". You can also use `#step-1` in a link, to 
+        point directly to this particular step.
+        
+        Positioning information is passed through data-* attributes.
+        
+        In the example below we only specify x and y position of the step element with `data-x="-1000"`
+        and `data-y="-1500"` attributes. This means that **the center** of the element (yes, the center)
+        will be positioned in point x = -1000px and y = -1500px of the presentation 'canvas'. It will not 
+        be rotated or scaled.
+        
+        The "step" class is what *must* be used for every "slide". In this example we also use the "slide"
+        class, which adds a rectangle with some background and makes this presentation look like a traditional
+        powerpoint slide show. The "slide" class is entirely optional and indeed you wouldn't use it for
+        your cooler impress.js presentations.
+    -->
+    <div id="title" class="step slide title" data-x="-2200" data-y="-3000">
+        <h1>Logging</h1>
+        <br /><br />
+        <br /><br />
+        <p>A non-glamourous, yet essential, part of any application</p>
+        
+
+        <div class="notes">
+        </div>
+    </div>
+
+
+    <div id="reasons" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Reasons for Logging</h1>
+        <br />
+        <ul>
+            <li>Measuring load</li>
+            <li>Security / Audit considerations</li>
+            <li>Health of the system / bottlenecks</li>
+            <li>Proactively detecting problems</li>
+            <li>Research and traceability</li>
+            <li>Reporting / Alerting</li>
+        </ul>
+
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="formats" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Log Formats</h1>
+        <p>So far we've just output plain, human readable, sentences.  This is friendly
+            for small applications with little load, but for scalable high load systems it becomes unmanageable
+            quickly.  We should use key value pairs or JSON so that logs can be easily parsed and searched.
+        </p>
+
+        <pre><code class="javascript">Example #1 :
+User abc123 created a new entity on May 14 at 3:15PM and the request took 557 milliseconds at /api/v1/entity
+
+Example #2 :
+user: 'abc123', action: 'create', path: '/api/v1/entity', requestDate: '2021-05-13T15:15:03.529Z', responseTime: '557'</code></pre>
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="console-levels" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1><code>console</code> Log Levels</h1>
+        <br />
+        <ol>
+            <li>debug</li>
+            <li>info</li>
+            <li>warn</li>
+            <li>error</li>
+        </ol>
+
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="winston" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Winston</h1>
+        Winston is a logging framework that goes far beyond what <code>console</code> can do.  It introduces more logging levels, supports multiple "transports", and is easily configurable / extensible.
+
+        <ol>
+            <li>silly</li>
+            <li>debug</li>
+            <li>verbose</li>
+            <li>http</li>
+            <li>info</li>
+            <li>warn</li>
+            <li>error</li>
+        </ol>
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="winston-formats" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Winston Formats</h1>
+        <p>It also allows you to create a standard "format" so all of your logs are guaranteed to adhere to a standard</p>
+
+        <br />
+        <pre><code class="javascript">const myFormat = printf(({ level, message, label, timestamp }) => {
+    return `${timestamp} [${label}] ${level}: ${message}`;
+});</code></pre>
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="console-or-winston" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Console or Winston?</h1>
+        <br />
+        <p>So the question is, do you actually need Winston?  Maybe, maybe not.  For small projects it is probably overkill and just more dependency bulk.  For larger projects it will allow you to enforce a consistent log format and it provides a lot of niceties that you would otherwise need to implement yourself.</p>
+
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="log-rotation" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Log Rotation</h1>
+        <p>In any long running application you're going to find the need for log file rotation.  This is simply writing to a new file at predetermined times.  Rotating the log file daily is pretty common but very high usage, or particularly chatty, applications might benefit from hourly rotation.</p>
+
+        <pre><code class="javascript">application.2021-05-13.log
+application.2021-05-13T15:00.log</code></pre>
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="what-to-log" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>What Should You (not) Log?</h1>
+        <ol>
+            <li>Passwords</li>
+            <li>Auth Tokens</li>
+            <li>API Keys (maybe)</li>
+            <li>API Secrets</li>
+            <li>Encryption Keys</li>
+            <li>IP Addresses / Server names (maybe)</li>
+            <li>... basically anything sensitive</li>
+        </ol>
+
+        
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="log-tools" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Log Management Tools</h1>
+        <p>There are a variety of log management tools available to make your logs actually useful. 
+            After all, what use are logs if you have so many that you can't find what you're looking for?
+        </p>
+
+        <ul>
+            <li>ELK (Elasticsearch, Logstash, Kibana)</li>
+            <li>Splunk</li>
+            <li>DataDog</li>
+        </ul>
+        <div class="notes">
+        </div>
+    </div>
+
+    <div id="performance" class="step slide" data-rel-x="2200" data-rel-y="0">
+        <h1>Performance Considerations</h1>
+        <br />
+        <p>Just because you're logging at "info" level doesn't mean your "debug" level log calls are free.
+            While overhead should be pretty minimal, keep in mind that you are spending cycles on <strong>not</strong> outputting logs.
+        </p>
+
+        <div class="notes">
+        </div>
+    </div>
+
+
+    <!-- This last, empty "slide" is set to be very large using the data-scale attribute, 
+         so that it covers all the other slides you just saw. 
+         It's a common way of zooming out at the end, to show the whole presentation.
+         In CSS, we set pointer-events:none to make this slide non-clickable. 
+         It makes a difference at least for SVG content, such as the mermaid diagram. -->
+    <div id="overview" class="step" data-x="4500" data-y="1500" data-scale="10" style="pointer-events: none;">
+    </div>
+</div>
+
+<!--
+    Add navigation-ui controls: back, forward and a select list.
+    Add a progress indicator bar (current step / all steps)
+    Add the help popup plugin
+-->
+<div id="impress-toolbar"></div>
+
+<div class="impress-progressbar"><div></div></div>
+<div class="impress-progress"></div>
+
+<div id="impress-help"></div>
+
+<!-- Extra modules
+     Load highlight.js, mermaid.js, markdown.js and MathJax.js from extras.
+     If you're curious about details, these are initialized in src/plugins/extras/extras.js 
+<script type="text/javascript" src="../../resources/impress.js/extras/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="../../resources/impress.js/extras/mermaid/mermaid.min.js"></script>
+<script type="text/javascript" src="../../resources/impress.js/extras/markdown/markdown.js"></script>
+<script type="text/javascript" src="../../resources/impress.js/extras/mathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
+-->
+<link rel="stylesheet" href="../../resources/highlight.js/styles/darcula.css">
+<script type="text/javascript" src="../../resources/highlight.js/highlight.pack.js"></script>
+
+<!--
+    To make all described above really work, you need to include impress.js in the page.
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. 
+-->
+<script type="text/javascript" src="../../resources/impress.js/js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>

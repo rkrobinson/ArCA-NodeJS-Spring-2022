@@ -5,7 +5,7 @@ const MathForFun = require('../mathForFun');
 describe('MathForFun - Assert', () => {
   
   // Test 'sum' function
-  describe('sum', () => {
+  describe('sum()', () => {
     // Test positive integer sum case
     it('should correctly add two positive integers', () => {
       const result = MathForFun.sum(1, 2);
@@ -34,7 +34,7 @@ describe('MathForFun - Assert', () => {
     });
 
     // Test non-positive integer subtract case
-    it('should correctly add a positive and negative integer', () => {
+    it('should correctly subtract a positive and negative integer', () => {
       const result = MathForFun.subtract(-1, 2);
       assert.equal(result, -3);
     });
